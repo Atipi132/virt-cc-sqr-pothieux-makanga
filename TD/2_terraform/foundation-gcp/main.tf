@@ -19,6 +19,7 @@ resource "google_compute_network" "vpc_1"{
 resource "google_compute_instance" "vm_pc1"{
     name= "vm-pc1"
     machine_type = "n2-standard-2"
+	zone         = "europe-west9-a"
     boot_disk {
       initialize_params {
         image = "debian-cloud/debian-11"

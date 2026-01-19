@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: europe-west1-docker.pkg.dev/polytech-dijon/polytech-dijon/makanga-pothieux-frontend:latest
+        image: europe-west1-docker.pkg.dev/polytech-dijon/polytech-dijon/projet-frontend:makanga-pothieux
         ports:
         - containerPort: 80
         resources:

@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: makanga-pothieux-frontend-rs
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+      - name: frontend
+        image: europe-west1-docker.pkg.dev/polytech-dijon/polytech-dijon/makanga-pothieux-frontend:latest
+        ports:
+        - containerPort: 80
+        resources:
+          requests:
+            cpu: "4m"
+            memory: "32Mi"

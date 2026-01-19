@@ -6,12 +6,12 @@ metadata:
     soft: nginx
   name: kuard-amd64-blue-makanga-pothieux-replicaset
 spec:
-  replicas: 1                     # Nombre d'instance de la charge de travail à déployer
+  replicas: 1                     
   selector:
     matchLabels:
       app: frontend
       soft: nginx
-  template:                       # template: à partir de là, les attributs qui suivent seront ceux du Pod qui va être créé
+  template:                   
     metadata:
       labels:
         app: frontend

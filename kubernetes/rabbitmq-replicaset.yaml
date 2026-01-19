@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  labels:
+    app: broker
+    soft: rabbitmq
+  name: rabbitmq-replicaset
+spec:
+  replicas: 1                     
+  selector:
+    matchLabels:
+      app: broker
+      soft: rabbitmq
+  template:                   
+    metadata:
+      labels:
+        app: broker
+        soft: rabbitmq
+    spec:
+      containers:
+      - name: rabbitmq
+        image: rabbitmq:3.12.0-management
+        protocol: TCP
+        env:
+        - name: URL_RABBITMQ_BACKEND
+          value: "http://backend-service:8080"
+        ports:
+        - containerPort: 5672
+        resources:
+          requests:
+            cpu: "4m"
+            memory: "32Mi"

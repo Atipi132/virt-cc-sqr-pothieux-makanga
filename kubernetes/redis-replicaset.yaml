@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  labels:
+    app: bdd
+    soft: redis
+  name: redis-replicaset
+spec:
+  replicas: 1                     
+  selector:
+    matchLabels:
+      app: bdd
+      soft: redis
+  template:                   
+    metadata:
+      labels:
+        app: bdd
+        soft: redis
+    spec:
+      containers:
+      - name: redis
+        image: redis:8.0.2
+        ports:
+        - containerPort: 6379
+        resources:
+          requests:
+            cpu: "4m"
+            memory: "32Mi"

@@ -14,4 +14,11 @@ spec:
             name: makanga-pothieux-frontend-rs
             port:
               number: 80
+      - path: /api
+        pathType: Prefix
+        backend:
+          service:
+            name: makanga-pothieux-backend-rs
+            port:
+              number: 5000
   - host: calculatrice-makanga-pothieux.polytech-dijon.kiowy.net

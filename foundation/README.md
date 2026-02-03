@@ -1,4 +1,32 @@
 # README for the Terraform part of the project
+# Foundation - Infrastructure as Code
+
+This directory contains the **Terraform** code used to provision the necessary infrastructure on **Scaleway**.
+
+## Infrastructure Overview
+
+We use the Scaleway Terraform provider to create a complete environment hosted in France (Region: `fr-par`).
+
+### Resources Created
+
+Based on the `main.tf` file, the following resources are provisioned:
+
+* **Container Registry:**
+    * `scaleway_registry_namespace`: A private registry named `main-cr` to store our Docker images.
+* **Network:**
+    * `scaleway_vpc_private_network`: A private network to isolate our cluster and databases.
+* **Kubernetes Cluster:**
+    * `scaleway_k8s_cluster`: A Kapsule cluster (version 1.32.3) using Cilium CNI.
+    * `scaleway_k8s_pool`: A node pool using `DEV1-M` instances.
+* **Databases:**
+    * `scaleway_rdb_instance`: A PostgreSQL instance (`db-dev-s`) configured for High Availability (HA).
+    * `scaleway_rdb_database`: Two logical databases created: `development` and `production`.
+* **Load Balancers:**
+    * Two Load Balancers (`development` and `production`) with dedicated IPs in `fr-par-1`.
+* **DNS Records:**
+    * Configuration of `A` records pointing to the Load Balancers:
+        * `calculatrice-POTIEUX-MAKANGA.polytech-dijon.kiowy.net` (Prod)
+        * `calculatrice-dev-POTIEUX-MAKANGA.polytech-dijon.kiowy.net` (Dev)
 
 The result of _terraform plan_ is :
 

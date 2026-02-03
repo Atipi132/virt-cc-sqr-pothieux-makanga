@@ -17,6 +17,7 @@ spec:
       containers:
       - name: backend
         image: europe-west1-docker.pkg.dev/polytech-dijon/polytech-dijon/projet-backend:makanga-pothieux
+        imagePullPolicy: Always
         ports:
         - containerPort: 5000
         env:

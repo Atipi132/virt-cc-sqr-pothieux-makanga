@@ -56,10 +56,9 @@ def calculate():
             'calculation': calculation
         }
 
-        # Initialize status in Redis (optional, but good practice)
-        r.set(task_id, 'PENDING')
+        if r:
+            r.set(task_id, 'PENDING')
 
-        # Send to RabbitMQ
         send_to_queue(message)
 
         return jsonify({'task_id': task_id}), 202

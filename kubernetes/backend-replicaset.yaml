@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: makanga-pothieux-backend-rs
+  labels:
+    app: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+      - name: backend
+        image: europe-west1-docker.pkg.dev/polytech-dijon/polytech-dijon/projet-backend:makanga-pothieux
+        ports:
+        - containerPort: 5000
+        env:
+        - name: REDIS_HOST
+          value: "redis-replicaset"
+        - name: RABBITMQ_HOST
+          value: "rabbitmq-replicaset"
+        resources:
+          requests:
+            cpu: "4m"
+            memory: "32Mi"

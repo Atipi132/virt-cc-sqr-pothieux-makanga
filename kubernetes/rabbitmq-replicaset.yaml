@@ -20,10 +20,6 @@ spec:
       containers:
       - name: rabbitmq
         image: rabbitmq:3.12.0-management
-        protocol: TCP
-        env:
-        - name: URL_RABBITMQ_BACKEND
-          value: "http://backend-service:8080"
         ports:
         - containerPort: 5672
         resources:
